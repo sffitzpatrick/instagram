@@ -1,0 +1,67 @@
+<?php
+function instagram_menu(){
+	$items['admin/config/instagram'] = array(
+		'title' => 'Instagram Settings',
+		'description' => 'Basic Instagram API settings',
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array('instagram_settings_form'),
+		'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'instagram.admin.inc',
+  );
+
+	return $items;
+}
+
+function instagram_search_media_tags($key_tag, $included_tags = null){
+	module_load_include('inc', 'instagram');
+	if($instagram = instagram_get_instance()){
+		//Perform search
+		$results = $instagram->getTagMedia($key_tag);
+		dsm($results);
+		foreach($results as $result){
+			//See if the result is tagged with any of the included tags
+/*			if(array_search($included_tags, $result['tags'])){
+				$matches[] = $result;
+			}*/
+			$matches[] = $result;
+		}
+		return $matches;
+	}else{
+		dsm('Instagram did not initialize');
+		return FALSE;
+	}
+}
+
+/**
+ * Implements hook_libraries_info() from
+ * Libraries API
+ * @todo:insert required files
+ * @todo:uncomment upon upgrade to libraries 2.x branch
+function instagram_libraries_info(){
+	$libraries['Instaphp'] = array(
+		'name' => 'Instaphp',
+		'vendor url' => 'http://Instaphp.com',
+		'download url' => 'https://github.com/sesser/Instaphp',
+		'files' => array(
+			'php' => array(
+				'instaphp.php',
+				
+			)
+		)
+	);
+	$libraries['Instagram-PHP-API'] = array(
+		'name' => 'Instagram-PHP-API',
+		'vendor url' => 'https://github.com/cosenary/Instagram-PHP-API',
+		'download url' => 'https://github.com/cosenary/Instagram-PHP-API',
+		'version' => '1.0',
+		'files' => array(
+			'php' => array(
+				'instagram.class.php',
+			),
+		),
+	);
+	return $libraries;
+}
+*/
+

@@ -1,0 +1,9 @@
+; $Id$ 
+name = Instagram 
+description = Basic instagram integration using the InstaPHP library 
+version = 7.x
+files[] = instagram.module
+files[] = instagram.inc
+files[] = instagram.admin.inc
+core = 7.x
+dependencies[] = libraries 
