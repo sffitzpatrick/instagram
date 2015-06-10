@@ -1,6 +1,6 @@
 <?php
 function instagram_menu(){
-	$items['admin/config/instagram'] = array(
+	$items['admin/config/services/instagram'] = array(
 		'title' => 'Instagram Settings',
 		'description' => 'Basic Instagram API settings',
 		'page callback' => 'drupal_get_form',
