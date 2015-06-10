@@ -3,7 +3,6 @@
 function instagram_requirements($phase){
 	//Check existence of Instagram-PHP-API upon install
 	if($phase == 'install'){
-		if()
 		$requirements['instagram-api'] = array(
       'title' => t('Instagram API'), 
       'description' => t("The Instagram API has not been correctly installed;
